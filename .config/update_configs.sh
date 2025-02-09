@@ -1,6 +1,6 @@
 #!/bin/bash
 
-GITHUB_CONFIG_DIR="$HOME/Git/Config_Files"
+GITHUB_CONFIG_DIR="$HOME/Git/Configs/.config/"
 LOCAL_CONFIG_DIR="$HOME/.config"
 
 set -e
