@@ -6,7 +6,7 @@ LOCAL_CONFIG_DIR="$HOME/.config"
 set -e
 
 # Iterate Over All Files In The GitHub Config Directory
-find "$GITHUB_CONFIG_DIR" -type f | while read -r file; do
+find "$GITHUB_CONFIG_DIR" -type f ! -path "$GITHUB_CONFIG_DIR/.git/*" | while read -r file; do 
   # Get The Relative Path Of The File
   relative_path="${file#$GITHUB_CONFIG_DIR/}"
   
