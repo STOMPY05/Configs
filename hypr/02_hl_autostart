@@ -1,0 +1,19 @@
+# https://wiki.hyprland.org/Configuring/Keywords/
+
+#################
+### AUTOSTART ###
+#################
+
+# Auto-Start Necessary Processes (Like Notifications Daemons, Status Bars, Etc.)
+
+exec-once = systemctl --user start hyprpolkitagent 
+
+exec-once = swaync
+
+exec-once = blueman-applet
+exec-once = nm-applet
+
+exec-once = hypridle
+exec-once = hyprpaper
+
+exec-once = waybar
