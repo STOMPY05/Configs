@@ -1,0 +1,10 @@
+[SddmGreeterTheme]
+Name=Boo
+Description=Boo
+Type=Sddm-Theme
+Version=0.0.1
+MainScript=main.qml
+ConfigFile=theme.conf
+Theme-Id=Boo
+Theme-API=2.0
+QtVersion=5

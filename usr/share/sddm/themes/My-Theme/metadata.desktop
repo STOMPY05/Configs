@@ -1,0 +1,13 @@
+[SddmGreeterTheme]
+Name=My-Theme
+Description=Theme For SDDM
+Author=
+Copyright=
+License=
+Type=Sddm-Theme
+Version=1.0.0
+MainScript=main.qml
+ConfigFile=theme.conf
+Theme-Id=My-Theme
+Theme-API=2.11
+QtVersion=6

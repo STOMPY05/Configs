@@ -21,6 +21,7 @@ window#waybar.hidden {
 window#waybar.empty {
     background-color: transparent;
 }
+
 window#waybar.solo {
     background-color: #FFFFFF;
 }
@@ -92,12 +93,14 @@ button:hover {
 #idle_inhibitor,
 #scratchpad,
 #power-profiles-daemon,
+
 #mpd {
     padding: 0 10px;
     color: #ffffff;
 }
 
 #window,
+
 #workspaces {
     margin: 0 4px;
 }

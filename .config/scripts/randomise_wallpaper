@@ -1,4 +1,9 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
+
+# To-Do:
+	# Update Script To Detect Whether Hyrpland Or Sway Is Running! - This Will Determing Wallpaper Application To Use
+
+# Requires Packages "hyprland, hyprpaper"
 
 WALLPAPER_DIR="$HOME/Pictures/Wallpapers/"
 CURRENT_WALLPAPER=$(hyprctl hyprpaper listloaded)

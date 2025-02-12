@@ -1,0 +1,285 @@
+##############################
+### AUTOSTART APPLICATIONS ###
+##############################
+
+# exec [--no-startup-id] <command>
+# exec_always [--no-startup-id] <command>
+
+exec systemctl --user start hyprpolkitagent
+exec swaync &
+exec blueman-applet &
+exec nm-applet &
+exec hypridle &
+exec hyprpaper &
+exec waybar -c ~/.configs/waybay/sway_config.jsonc &
+
+
+#################
+### VARIABLES ###
+#################
+
+
+########################
+### GENERAL SETTINGS ###
+########################
+
+#font
+
+smart_gaps off
+gaps inner 5
+gaps outer 20
+
+#focus_follows_mouse no
+
+#mouse_warping none
+
+# Show Pop-Ups Durning Fullscreen (Smart, Ignore, Leave_Fullscreen, All)
+#popup_during_fullscreen smart
+
+# Allow Applications To Take Focus (Smart, Urgent, Focus, None)
+#focus_on_window_activation smart
+
+
+####################
+### KEY BINDINGS ###
+####################
+
+# Set Modifier Key (Mod1-Shift, Mod2-Control, Mod4-Windows):
+	set $mod Mod4
+
+# Set Default Apps:
+	set $term kitty
+	set $menu wofi --show drun
+
+# Set Direction Keys, Vim Style:
+	set $left h
+	set $down j
+	set $up k
+	set $right l
+
+# Basics:
+    # Start Terminal
+    bindsym $mod+Return exec $term
+
+    # Kill Focused Window
+    bindsym $mod+q kill
+
+    # Start Launcher
+    bindsym $mod+d exec $menu
+
+    # Reload Sway
+    bindsym $mod+Shift+r reload
+
+	# Exit Sway
+    bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit Sway? This Will End Your Current Wayland Session!' -B 'Yes, Exit Sway' 'swaymsg exit'
+
+    # Drag Floating Windows By Holding Down '$mod' + LMB
+    # Resize Them With Right '$mod' + RMB
+    # Despite The Name, Also Works For Non-Floating Windows
+    
+    # Change Normal To Inverse To Swap Mouse Buttons
+    floating_modifier $mod normal
+
+# Moving Around:
+    # Move The Focus Around, (Vim Keys)
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
+    
+	# Move The Focus Around, (Arrow Keys)
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
+
+    # Move The Focused Window Using Shift Key, (Vim Keys)
+    bindsym $mod+Shift+$left move left
+    bindsym $mod+Shift+$down move down
+    bindsym $mod+Shift+$up move up
+    bindsym $mod+Shift+$right move right
+    
+    # Move The Focused Window Using Shift Key, (Arrow Keys)
+    bindsym $mod+Shift+Left move left
+    bindsym $mod+Shift+Down move down
+    bindsym $mod+Shift+Up move up
+    bindsym $mod+Shift+Right move right
+
+# Workspaces:
+    # Switch To Workspace
+    bindsym $mod+1 workspace number 1
+    bindsym $mod+2 workspace number 2
+    bindsym $mod+3 workspace number 3
+    bindsym $mod+4 workspace number 4
+    bindsym $mod+5 workspace number 5
+    bindsym $mod+6 workspace number 6
+    bindsym $mod+7 workspace number 7
+    bindsym $mod+8 workspace number 8
+    bindsym $mod+9 workspace number 9
+    bindsym $mod+0 workspace number 10
+    
+	# Move Active Container To Workspace
+    # Workspaces Can Have Any Name You Want, Not Just Numbers
+	bindsym $mod+Shift+1 move container to workspace number 1
+    bindsym $mod+Shift+2 move container to workspace number 2
+    bindsym $mod+Shift+3 move container to workspace number 3
+    bindsym $mod+Shift+4 move container to workspace number 4
+    bindsym $mod+Shift+5 move container to workspace number 5
+    bindsym $mod+Shift+6 move container to workspace number 6
+    bindsym $mod+Shift+7 move container to workspace number 7
+    bindsym $mod+Shift+8 move container to workspace number 8
+    bindsym $mod+Shift+9 move container to workspace number 9
+    bindsym $mod+Shift+0 move container to workspace number 10
+
+# Layout:
+    # Horizontal Split
+	bindsym $mod+b splith
+	# Vertical Split
+	bindsym $mod+v splitv
+
+    # Switch The Current Container Between Different Layout Styles
+    bindsym $mod+s layout stacking
+    bindsym $mod+w layout tabbed
+    bindsym $mod+e layout toggle split
+
+    # Make The Current Focus Full-Screen
+    bindsym $mod+f fullscreen
+
+    # Toggle Between Floating & Tiling
+    bindsym $mod+Shift+space floating toggle
+
+    # Swap Focus Between The Tiling Area & The Floating Area
+    bindsym $mod+space focus mode_toggle
+
+    # Move Focus To The Parent Container
+    bindsym $mod+a focus parent
+
+# ScratchPad:
+    # Move The Currently Focused Window To The ScratchPad
+    bindsym $mod+Shift+minus move scratchpad
+
+    # Show The Next ScratchPad Window Or Hide The Focused ScratchPad Window
+    # If There Are Multiple ScratchPad Windows, This Command Cycles Through Them
+	
+	# The Below Fixes An Issue Where Windows Don't Size Correctly When Sent To ScratchPad
+	bindsym $mod+minus scratchpad show, resize set 1024 768, move position center
+
+# Resizing Containers:
+	# Set Mode To Resize
+	bindsym $mod+r mode "Resize"
+
+	mode "Resize" {
+		# Resize Window (Vim Keys)
+		bindsym $left resize shrink width 10px
+		bindsym $down resize grow height 10px
+		bindsym $up resize shrink height 10px
+		bindsym $right resize grow width 10px
+
+		# Resize Window (Arrow Keys)
+		bindsym Left resize shrink width 10px
+		bindsym Down resize grow height 10px
+		bindsym Up resize shrink height 10px
+		bindsym Right resize grow width 10px
+
+		# Return To Default Mode
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
+	}
+
+# Utilities:
+    # Adjust Audio
+    bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
+    bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
+    bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
+    bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+    
+	# Adjust Brightness
+    bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+    bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+    
+	# Take Screenshot
+    bindsym Print exec grim
+
+
+############################
+### SCREEN CONFIGURATION ###
+############################
+
+# Wallpaper Settings:
+	#output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+
+# Monitor Setup:
+# You Can Get The Names Of Your Outputs By Running 'swaymsg -t get_outputs'
+	#output HDMI-A-1 resolution 1920x1080 position 1920,0
+
+
+##########################
+### IDLE CONFIGURATION ###
+##########################
+
+# SwayIdle:
+	#exec swayidle -w \
+		#timeout 300 'swaylock -f -c 000000' \
+		#timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+		#before-sleep 'swaylock -f -c 000000'
+
+
+###########################
+### INPUT CONFIGURATION ###
+###########################
+
+# You Can Get The Names Of Your Inputs By Running 'swaymsg -t get_inputs'
+# Read Man 5 Sway-Input
+
+# Example Configuration:
+	#input "2:14:SynPS/2_Synaptics_TouchPad" {
+		#dwt enabled
+		#tap enabled
+		#natural_scroll enabled
+		#middle_emulation enabled
+	#}
+
+# Set Keyboard Language:
+	input * {
+		xkb_layout gb
+	}
+
+
+##################
+### STATUS BAR ###
+##################
+
+# Read `Man 5 'sway-bar'
+
+#bar {
+	#position top
+
+	#colors {
+		#statusline #ffffff
+		#background #323232
+		#inactive_workspace #32323200 #32323200 #5c5c5c
+	#}
+#}
+
+
+################################
+### WINDOW / WORKSPACE RULES ###
+################################
+
+# Window Rules:
+	# Firefox
+		for_window [app_id="firefox" title="Developer Tools.*"] resize set width 70
+
+	# Font Window
+		for_window [app_id="qt6ct" title="Select Font.*"] floating enable, resize set 1024 762, move position center
+
+# Workspace Rules:
+	# Open Workspace On Specific Screens
+	# Workspace 'workspace' Output 'output1'
+
+
+########################################
+### SOURCE EXT CONFIGS - END OF FILE ###
+########################################
+
+#include /etc/sway/config.d/*
