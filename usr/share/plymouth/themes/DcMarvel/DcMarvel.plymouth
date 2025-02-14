@@ -1,0 +1,9 @@
+[Plymouth Theme]
+Name=Dc X Marvel Boot
+Description=Dc X Marvel Bootanimation For Plymouth
+Comment=made by Vivek Rajan
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/DcMarvel
+ScriptFile=/usr/share/plymouth/themes/DcMarvel/DcMarvel.script

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 MY_CONFIG_DIR="$HOME/Git/Configs/.config"
 LOCAL_CONFIG_DIR="$HOME/.config"
@@ -24,7 +24,7 @@ done
 
 echo "All Files Have Been Sym-Linked From $MY_CONFIG_DIR to $LOCAL_CONFIG_DIR!"
 
-sleep 1
+sleep 2
 
 # Restart Hyprland When Complete
 echo "Reloading Hyprland! "

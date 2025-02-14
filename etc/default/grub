@@ -1,0 +1,61 @@
+# GRUB Boot Loader Configuration
+
+GRUB_DEFAULT=0
+GRUB_TIMEOUT=5
+GRUB_DISTRIBUTOR="Arch"
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash cryptdevice=UUID=ad3e72a2-7ab2-49a3-aa48-0b865f0d9081:cryptroot"
+GRUB_CMDLINE_LINUX=""
+
+# Preload Both GPT & MBR Modules So That They Are Not Missed
+GRUB_PRELOAD_MODULES="part_gpt part_msdos"
+
+# Uncomment To Enable Booting From LUKS Encrypted Devices
+GRUB_ENABLE_CRYPTODISK=y
+
+# Set To 'countdown' | 'hidden' To Change Timeout Behavior
+# Press ESC Key To Display Menu
+GRUB_TIMEOUT_STYLE=menu
+
+# Uncomment To Use Basic Console
+GRUB_TERMINAL_INPUT=console
+
+# Uncomment To Disable Graphical Terminal
+#GRUB_TERMINAL_OUTPUT=console
+
+# Set The Resolution Used On The Graphical Terminal
+GRUB_GFXMODE=1920x1080,auto
+
+# Uncomment To Allow The Kernel Use The Same Resolution Used By GRUB
+GRUB_GFXPAYLOAD_LINUX=keep
+
+# Uncomment If You Want GRUB To Pass To The Linux Kernel The Old Parameter
+# Format 'root=/dev/xxx' Instead Of 'root=/dev/disk/by-uuid/xxx'
+#GRUB_DISABLE_LINUX_UUID=true
+
+# Uncomment To Disable Generation Of Recovery Mode Menu Entries
+GRUB_DISABLE_RECOVERY=true
+
+# Uncomment And Set To The Desired Menu Colors.  Used By Normal & Wallpaper
+# Modes Only. Entries Specified Are Foreground/Background
+#GRUB_COLOR_NORMAL="light-blue/black"
+#GRUB_COLOR_HIGHLIGHT="light-cyan/blue"
+
+# Uncomment One Of Them For The GFX Desired, An Image Background Or A GFX-Theme
+GRUB_BACKGROUND="/boot/grub/themes/stylish/background.jpg"
+GRUB_THEME="/boot/grub/themes/stylish/theme.txt"
+
+# Uncomment To Get A Beep At GRUB Start
+#GRUB_INIT_TUNE="480 440 1"
+
+# Uncomment To Make GRUB Remember The Last Selection. This Requires
+# Setting 'GRUB_DEFAULT=saved' Above
+#GRUB_SAVEDEFAULT=true
+
+# Uncomment To Disable Submenus In Boot Menu
+#GRUB_DISABLE_SUBMENU=y
+
+# Probing For Other Operating Systems Is Disabled For Security Reasons. Read
+# Documentation On 'GRUB_DISABLE_OS_PROBER', If You Still Want To Enable This
+# Functionality Install 'os-prober' & Uncomment To Detect And Include Other
+# Operating Systems
+#GRUB_DISABLE_OS_PROBER=false

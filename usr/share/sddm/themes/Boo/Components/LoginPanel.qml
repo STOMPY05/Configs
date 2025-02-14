@@ -11,7 +11,6 @@ Item {
 
     Column {
         spacing: 8
-
         anchors {
             bottom: parent.bottom
             left: parent.left
@@ -44,6 +43,7 @@ Item {
 
         Button {
             id: loginButton
+            visible: false // Button Hidden
             height: inputHeight
             width: parent.width
             enabled: user != "" && password != "" ? true : false
@@ -68,6 +68,7 @@ Item {
                 color: config.LoginButtonBgColor
                 opacity: 0.5
                 radius: config.CornerRadius
+                anchors.bottom: parent.bottom
             }
 
             Rectangle {

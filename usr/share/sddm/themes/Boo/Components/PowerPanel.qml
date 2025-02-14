@@ -112,7 +112,7 @@ Item {
                         id: iconOverlay
                         anchors.fill: powerIcon
                         source: powerIcon
-                        color: config.PopupBgColor
+                        color: config.PopupTextFieldTextColor
                     }
 
                     Text {
@@ -142,7 +142,7 @@ Item {
                         
                         PropertyChanges {
                             target: powerEntryBg
-                            color: "#e57373"
+                            color: config.PopupHoverColor
                         }
                         
                         PropertyChanges {

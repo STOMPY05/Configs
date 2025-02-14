@@ -25,7 +25,7 @@ Item {
                 font.bold: true
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                color: highlighted ? config.PopupHighlightedTextColor : config.PopupHighlightColor
+                color: config.PopupTextFieldTextColor
                 text: name
             }
 
@@ -99,6 +99,7 @@ Item {
                 PropertyChanges {
                     target: sessionButtonBg
                     color: Qt.darker(config.SessionButtonColor, 1.2)
+
                 }
             },
             

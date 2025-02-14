@@ -2,16 +2,16 @@
 ### AUTOSTART APPLICATIONS ###
 ##############################
 
-# exec [--no-startup-id] <command>
-# exec_always [--no-startup-id] <command>
+# exec <command>
+# exec_always <command>
 
-exec systemctl --user start hyprpolkitagent
+exec systemctl --user start hyprpolkitagent &
 exec swaync &
 exec blueman-applet &
 exec nm-applet &
 exec hypridle &
 exec hyprpaper &
-exec waybar -c ~/.configs/waybay/sway_config.jsonc &
+exec waybar -c $HOME/.configs/waybay/config &
 
 
 #################
@@ -28,6 +28,8 @@ exec waybar -c ~/.configs/waybay/sway_config.jsonc &
 smart_gaps off
 gaps inner 5
 gaps outer 20
+
+client.focused #00ffff #285577 #ffffff #d9534f
 
 #focus_follows_mouse no
 
@@ -50,6 +52,7 @@ gaps outer 20
 # Set Default Apps:
 	set $term kitty
 	set $menu wofi --show drun
+	set $filemanager thunar
 
 # Set Direction Keys, Vim Style:
 	set $left h
@@ -61,17 +64,20 @@ gaps outer 20
     # Start Terminal
     bindsym $mod+Return exec $term
 
-    # Kill Focused Window
-    bindsym $mod+q kill
+    #Start Thunar
+    bindsym $mod+u exec $filemanager
 
     # Start Launcher
-    bindsym $mod+d exec $menu
+    bindsym $mod+Space exec $menu
+
+    # Kill Focused Window
+    bindsym $mod+q kill
 
     # Reload Sway
     bindsym $mod+Shift+r reload
 
 	# Exit Sway
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit Sway? This Will End Your Current Wayland Session!' -B 'Yes, Exit Sway' 'swaymsg exit'
+    bindsym $mod+Shift+e exec 'swaymsg exit'
 
     # Drag Floating Windows By Holding Down '$mod' + LMB
     # Resize Them With Right '$mod' + RMB
@@ -81,6 +87,9 @@ gaps outer 20
     floating_modifier $mod normal
 
 # Moving Around:
+    #Focus Next Stack , Tab, Window
+    bindsym $mod+Tab focus next
+
     # Move The Focus Around, (Vim Keys)
     bindsym $mod+$left focus left
     bindsym $mod+$down focus down
@@ -149,7 +158,7 @@ gaps outer 20
     bindsym $mod+Shift+space floating toggle
 
     # Swap Focus Between The Tiling Area & The Floating Area
-    bindsym $mod+space focus mode_toggle
+    bindsym $mod+z focus mode_toggle
 
     # Move Focus To The Parent Container
     bindsym $mod+a focus parent
@@ -162,7 +171,7 @@ gaps outer 20
     # If There Are Multiple ScratchPad Windows, This Command Cycles Through Them
 	
 	# The Below Fixes An Issue Where Windows Don't Size Correctly When Sent To ScratchPad
-	bindsym $mod+minus scratchpad show, resize set 1024 768, move position center
+	bindsym $mod+minus scratchpad show, resize set 1366 768, move position center
 
 # Resizing Containers:
 	# Set Mode To Resize
@@ -267,6 +276,13 @@ gaps outer 20
 ################################
 
 # Window Rules:
+	# ALL WINDOWS
+	for_window [class=".*"] border pixel 5
+
+
+
+
+
 	# Firefox
 		for_window [app_id="firefox" title="Developer Tools.*"] resize set width 70
 

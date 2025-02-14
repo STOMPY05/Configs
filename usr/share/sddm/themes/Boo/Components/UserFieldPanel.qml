@@ -8,7 +8,7 @@ TextField {
     width: inputWidth
     selectByMouse: true
     echoMode: TextInput.Normal
-    selectionColor: config.TextFieldTextColor
+    selectionColor: config.TextFieldHighlightColor
     renderType: Text.NativeRendering
     font.family: config.Font
     font.pointSize: config.GeneralFontSize
@@ -21,8 +21,8 @@ TextField {
     background: Rectangle {
         id: userFieldBackground
         color: config.TextFieldColor
-        border.color: config.TextFieldHighlightColor
-        border.width: 0
+        border.color: config.TextFieldTextColor
+        border.width: 1
         radius: config.CornerRadius
     }
 

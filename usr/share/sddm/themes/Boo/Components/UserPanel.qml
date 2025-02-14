@@ -70,7 +70,7 @@ Column {
         id: userPopup
         width: inputWidth
         padding: 15
-        y: 1000
+        y: (pictureBorder.height - height) / 2
 
         background: Rectangle {
             radius: config.CornerRadius * 1.4
@@ -93,14 +93,6 @@ Column {
                     from: 0
                     to: 1
                     duration: 400
-                    easing.type: Easing.OutExpo
-                }
-                
-                NumberAnimation {
-                    property: "y"
-                    from: (inputWidth / 3) - userPopup.padding - (inputHeight * userList.count * 0.5) - (userList.spacing * (userList.count - 1) * 0.5) + (inputWidth * 0.1)
-                    to: (inputWidth / 3) - userPopup.padding - (inputHeight * userList.count * 0.5) - (userList.spacing * (userList.count - 1) * 0.5)
-                    duration: 500
                     easing.type: Easing.OutExpo
                 }
             }
@@ -221,8 +213,7 @@ Column {
             id: incorrectPopup
             height: incorrectText.paintedHeight * 2
             width: inputWidth
-            //y: (pictureBorder.height - height) / 2
-            y: 50
+            y: (pictureBorder.height - height) / 2
             onOpened: incorrectTimer.start()
 
             background: Rectangle {
@@ -238,7 +229,7 @@ Column {
                 font.bold: true
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                color: config.PopupHighlightColor
+                color: config.PopupErrorColor
                 text: "Login Failed!"
             }
 
