@@ -2,32 +2,44 @@
     "layer": "top",
     "position": "top",
 
-    "modules-left": ["hyprland/workspaces"],
+    "modules-left": ["custom/appmenu", "hyprland/workspaces"],
     "modules-center": ["custom/music"],
-    "modules-right": ["pulseaudio", "backlight", "battery", "clock", "tray", "custom/lock", "custom/power"],
+    "modules-right": ["pulseaudio", "bluetooth", "backlight", "battery", "clock", "tray", "custom/power"],
     
+    "custom/appmenu": {
+        "tooltip": false,
+        "on-click": "wlogout --protocol layer-shell -b 5 &",
+        "format": ""
+    },
+
     "hyprland/workspaces": {
          "disable-scroll": true,
          "sort-by-number": true,
          "format": " {icon} ",
          
          "format-icons": {
-             "default": "",
-         },
+             "1": "",
+             "2": "",
+             "3": "",
+             "4": "󰏆",
+             "5": "",
+             "6": "",
+             "7": "",
+             "8": "",
+             "9": "󰖳",
+             "10": "",
+             "default": ""
+         }
      },
     
     "tray": {
-        "icons": {
-            "nm-applet": "",
-            "blueman-applet": ""
-        },
-        
         "icon-size": 21,
-        "spacing": 10
+        "spacing": 10,
+        "tooltip": false
     },
     
     "custom/music": {
-        "format": "  {}",
+        "format": "󰝚  {}",
         "escape": true,
         "interval": 5,
         "tooltip": false,
@@ -37,15 +49,18 @@
     },
     
     "clock": {
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": " {:%d/%m/%Y}",
-        "format": " {:%H:%M}"
+        "format": " {:%H:%M}",
+        "tooltip": false,
+        "on-click-right": "kitty --title 'calcurse' -e calcurse"
     },
     
     "backlight": {
         "device": "intel_backlight",
         "format": "{icon} {percent}%",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "format-alt": "{icon}",
+        "tooltip": false
     },
     
     "battery": {
@@ -54,11 +69,12 @@
             "critical": 15
         },
         
-        "format": "{icon}",
+        "format": "{icon} {capacity}%",
         "format-charging": "",
         "format-plugged": "",
-        "format-alt": "{icon}",
-        "format-icons": ["", "",  "", "", "", "", "", "", "", "", "", ""]
+        "format-alt": "{icon} {power}W",
+        "format-icons": ["", "",  "", "", "", "", "", "", "", "", "", ""],
+        "tooltip": false
     },
     
     "pulseaudio": {
@@ -69,18 +85,21 @@
             "default": ["", "", " "]
         },
         
-        "on-click": "pavucontrol"
+        "on-click": "pavucontrol",
+        "tooltip": false
     },
-    
-    "custom/lock": {
-        "tooltip": false,
-        "on-click": "sh -c ~/.config/scripts/hyprlock_lock.sh",
-        "format": "",
-    },
-    
+
     "custom/power": {
         "tooltip": false,
         "on-click": "wlogout --protocol layer-shell -b 5 &",
         "format": "襤"
+    },
+
+    "bluetooth": {
+        "format-on": "",
+        "format-off": "",
+        "format-connected": "",
+        "on-click": "blueman-manager &",
+        "tooltip": false
     }
 }

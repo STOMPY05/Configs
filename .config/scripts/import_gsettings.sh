@@ -1,5 +1,7 @@
 #!/bin/sh
 
+### Manually Apply GTK 3.0 Appearances. Pulls Settings From '.config/gtk-3.0/settings.ini'
+
 config="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-3.0/settings.ini"
 if [ ! -f "$config" ]; then exit 1; fi
 

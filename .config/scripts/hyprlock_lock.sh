@@ -1,15 +1,17 @@
 #!/usr/bin/env sh
 
-# Requires Packages "grim, hyprlock, magick, playerctl"
+### Locks The Screem & Displays A Blurred Desktop Background
 
-# Take A Screenshot
+### Requires Packages "grim, hyprlock, magick, playerctl"
+
+### Take A Screenshot
 grim $HOME/Pictures/Hyprlock/Hyprlock.png
 
-# Blue Screenshots
+### Blur Screenshots
 magick $HOME/Pictures/Hyprlock/Hyprlock.png -blur 0x5 $HOME/Pictures/Hyprlock/Hyprlock.png
 
-# Pause Music
+### Pause Music If Playing
 playerctl pause
 
-# Lock Screen
+### Lock Screen
 pidof hyrlock || hyprlock

@@ -1,3 +1,9 @@
+#############################
+### GRUB2 Theme - Stylish ###
+#############################
+
+# https://github.com/vinceliuice/grub2-themes
+
 title-text: ""
 desktop-image: "background.jpg"
 desktop-color: "#000000"

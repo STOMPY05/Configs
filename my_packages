@@ -7,4 +7,7 @@ spotify-launcher
 brave-bin
 
 # File Managers
-yazi
+yazi thunar
+
+# Network Tools
+networkmanager networkmanager-openvpn network-manager-applet

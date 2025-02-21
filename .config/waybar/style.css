@@ -1,8 +1,15 @@
+/* Catppuccin Colours */
+
+/* https://github.com/catppuccin */
+
+@define-color arch #1793d1;
+
 @import "frappe.css";
+@import "nord.css";
 
 * {
   font-family: FantasqueSansMono Nerd Font;
-  font-size: 17px;
+  font-size: 19px;
   min-height: 0;
 }
 
@@ -40,8 +47,9 @@
 #backlight,
 #clock,
 #battery,
+#bluetooth,
 #pulseaudio,
-#custom-lock,
+#custom-appmenu,
 #custom-power {
   background-color: @surface0;
   padding: 0.5rem 1rem;
@@ -66,12 +74,24 @@
   color: @red;
 }
 
+#bluetooth {
+  border-radius: 0;
+}
+
+#bluetooth.disabled {
+  color: @lavender;
+}
+
+#bluetooth.connected {
+  color: #5e81ac;
+}
+
 #backlight {
   color: @yellow;
 }
 
 #backlight, #battery {
-    border-radius: 0;
+  border-radius: 0;
 }
 
 #pulseaudio {
@@ -80,19 +100,20 @@
   margin-left: 1rem;
 }
 
+#custom-appmenu {
+  border-radius: 1rem 1rem 1rem 1rem;
+  margin-left: 1rem;
+  color: @arch;
+}
+
 #custom-music {
   color: @mauve;
   border-radius: 1rem;
 }
 
-#custom-lock {
-    border-radius: 1rem 0px 0px 1rem;
-    color: @lavender;
-}
-
 #custom-power {
     margin-right: 1rem;
-    border-radius: 0px 1rem 1rem 0px;
+    border-radius: 1rem;
     color: @red;
 }
 

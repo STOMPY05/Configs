@@ -41,8 +41,8 @@ GRUB_DISABLE_RECOVERY=true
 #GRUB_COLOR_HIGHLIGHT="light-cyan/blue"
 
 # Uncomment One Of Them For The GFX Desired, An Image Background Or A GFX-Theme
-GRUB_BACKGROUND="/boot/grub/themes/stylish/background.jpg"
-GRUB_THEME="/boot/grub/themes/stylish/theme.txt"
+GRUB_BACKGROUND="/boot/grub/themes/tela/background.jpg"
+GRUB_THEME="/boot/grub/themes/tela/theme.txt"
 
 # Uncomment To Get A Beep At GRUB Start
 #GRUB_INIT_TUNE="480 440 1"

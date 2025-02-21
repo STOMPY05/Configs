@@ -1,15 +1,14 @@
 #!/usr/bin/env sh
 
-# To-Do:
-	# Update Script To Detect Whether Hyrpland Or Sway Is Running! - This Will Determing Wallpaper Application To Use
+### Picks From A Random Wallpaper In WALLPAPER_DIR And Loads It Via 'hyprpaper'
 
-# Requires Packages "hyprland, hyprpaper"
+### Requires Packages "hyprland, hyprpaper"
 
 WALLPAPER_DIR="$HOME/Pictures/Wallpapers/"
 CURRENT_WALLPAPER=$(hyprctl hyprpaper listloaded)
 
-# Get A Random Wallpaper That Is Not The Current One
+### Get A Random Wallpaper That Is Not The Current One
 WALLPAPER=$(find "$WALLPAPER_DIR" -type f ! -name "$(basename "$CURRENT_WALLPAPER")" | shuf -n 1)
 
-# Apply The Selected Wallpaper
+### Apply The Selected Wallpaper
 hyprctl hyprpaper reload ,"$WALLPAPER"
