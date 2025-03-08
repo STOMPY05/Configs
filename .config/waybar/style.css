@@ -1,69 +1,39 @@
-/* Catppuccin Colours */
-
-/* https://github.com/catppuccin */
-
-@define-color arch #1793d1;
-
-@import "frappe.css";
-@import "nord.css";
+@import "dracula.css";
 
 * {
-  font-family: FantasqueSansMono Nerd Font;
-  font-size: 19px;
+  font-family: MesloLGS NF;
+  font-size: 16px;
   min-height: 0;
 }
 
-#waybar {
-  background: transparent;
-  color: @text;
-  margin: 5px 5px;
-}
-
-#workspaces {
-  border-radius: 1rem;
-  margin: 5px;
-  background-color: @surface0;
-  margin-left: 1rem;
-}
-
-#workspaces button {
-  color: @lavender;
-  border-radius: 1rem;
-  padding: 0.4rem;
-}
-
-#workspaces button.active {
-  color: @sky;
-  border-radius: 1rem;
-}
-
-#workspaces button:hover {
-  color: @sapphire;
-  border-radius: 1rem;
-}
-
-#custom-music,
-#tray,
-#backlight,
-#clock,
-#battery,
-#bluetooth,
-#pulseaudio,
 #custom-appmenu,
-#custom-power {
-  background-color: @surface0;
+#custom-misc,
+#custom-music,
+#custom-system,
+#disk,
+#cpu,
+#memory,
+#backlight,
+#battery,
+#pulseaudio,
+#clock,
+#bluetooth,
+#network,
+#tray {
+  color: @foreground;
+  background-color: @background;
+  margin: 4.5px 0px;  
   padding: 0.5rem 1rem;
-  margin: 5px 0;
 }
 
-#clock {
-  color: @blue;
-  border-radius: 0px 1rem 1rem 0px;
-  margin-right: 1rem;
+#backlight {
+  color: @yellow;
 }
 
 #battery {
   color: @green;
+  border-radius: 0px 1rem 1rem 0px;
+  margin-right: 1rem;
 }
 
 #battery.charging {
@@ -75,49 +45,129 @@
 }
 
 #bluetooth {
-  border-radius: 0;
+  border-radius: 1rem 0px 0px 1rem;
 }
 
 #bluetooth.disabled {
-  color: @lavender;
+  color: @red;
 }
 
 #bluetooth.connected {
-  color: #5e81ac;
+  color: @cyan;
 }
 
-#backlight {
-  color: @yellow;
+#clock {
+  color: @foreground;
+  border-radius: 0px 1rem 1rem 0px;
+  margin-right: 1rem;
 }
 
-#backlight, #battery {
-  border-radius: 0;
+#cpu {
+  color: @purple;
+  padding: 0px;
 }
 
-#pulseaudio {
-  color: @maroon;
-  border-radius: 1rem 0px 0px 1rem;
-  margin-left: 1rem;
+#cpu.critical {
+  color: @red;
+}
+
+#cpu.warning {
+  color: @orange;
 }
 
 #custom-appmenu {
-  border-radius: 1rem 1rem 1rem 1rem;
+  border-radius: 1rem;
+  color: @cyan;
   margin-left: 1rem;
-  color: @arch;
 }
 
 #custom-music {
-  color: @mauve;
   border-radius: 1rem;
+  color: @purple;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
-#custom-power {
-    margin-right: 1rem;
-    border-radius: 1rem;
-    color: @red;
+#custom-misc {
+  background-color: @currentline;
+  border-radius: 0px 1rem 1rem 0px;
+}
+
+#custom-system {
+  background-color: @currentline;
+  border-radius: 1rem 0px 0px 1rem;
+}
+
+#disk {
+  color: @purple;
+  padding: 5px;
+}
+
+#memory {
+  color: @purple;
+  padding: 5px;
+}
+
+#network.disabled {
+  color: @red;
+}
+
+#network {
+  border-radius: 0px 1rem 1rem 0px;
+  margin-right: 1rem;
+}
+
+#network.disabled {
+  color: @comment;
+}
+
+#network.diconnected {
+  color: @comment;
+}
+
+#network.ethernet {
+  color: @green;
+}
+
+#network.wifi {
+  color: @green;
+}
+
+#pulseaudio {
+  border-radius: 1rem 0px 0px 1rem;
+  color: @purple;
 }
 
 #tray {
-  margin-right: 1rem;
   border-radius: 1rem;
+  margin-right: 1rem;
+}
+
+#waybar {
+  background: @background;
+  color: @background;
+}
+
+#workspaces {
+  background-color: @background;
+  border-radius: 1rem;
+  margin: 5px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding: 0px 1rem 0px 1rem
+}
+
+#workspaces button {
+  border-radius: 1rem;  
+  color: @purple;
+}
+
+#workspaces button.active {
+  border-radius: 1rem;
+  color: @cyan;
+}
+
+#workspaces button.urgent {
+  border-radius: 1rem;
+  color: @red;
 }

@@ -1,0 +1,3 @@
+imagebox {
+background-image: url("~/.config/icons/rofi/power-on.png", height);
+}

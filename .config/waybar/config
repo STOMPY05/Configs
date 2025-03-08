@@ -3,103 +3,178 @@
     "position": "top",
 
     "modules-left": ["custom/appmenu", "hyprland/workspaces"],
-    "modules-center": ["custom/music"],
-    "modules-right": ["pulseaudio", "bluetooth", "backlight", "battery", "clock", "tray", "custom/power"],
+    "modules-center": ["group/misc", "custom/music", "group/system"],
     
+    "modules-right": ["pulseaudio",  "clock", "bluetooth", "network", "tray"],
+
     "custom/appmenu": {
-        "tooltip": false,
-        "on-click": "wlogout --protocol layer-shell -b 5 &",
-        "format": ""
+        "format": "󰣇",
+        "on-click": "",
+        "tooltip": false
     },
 
     "hyprland/workspaces": {
          "disable-scroll": true,
-         "sort-by-number": true,
-         "format": " {icon} ",
-         
+         "format": "{icon}",
+
          "format-icons": {
-             "1": "",
-             "2": "",
-             "3": "",
-             "4": "󰏆",
-             "5": "",
-             "6": "",
-             "7": "",
-             "8": "",
-             "9": "󰖳",
-             "10": "",
-             "default": ""
-         }
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "10": "10"
+         },
+
+         "sort-by-number": true
      },
-    
-    "tray": {
-        "icon-size": 21,
-        "spacing": 10,
+
+     "group/misc": {
+        "drawer": {
+        "click-to-reveal": true,
+        "transition-duration": 500,
+        "transition-left-to-right": false
+        },
+
+        "modules": [
+            "custom/misc"
+            ],
+
+        "orientation": "horizontal"
+    },
+
+    "custom/misc": {
+        "format": "..",
         "tooltip": false
     },
-    
+
     "custom/music": {
-        "format": "󰝚  {}",
         "escape": true,
-        "interval": 5,
-        "tooltip": false,
         "exec": "playerctl metadata --format='{{ title }}'",
+        "format": "󰝚  {}",
+        "interval": 5,
+        "max-length": 25,
         "on-click": "playerctl play-pause",
-        "max-length": 50
+        "on-click-right": "hyprctl dispatch togglespecialworkspace music",
+        "tooltip": false
     },
-    
-    "clock": {
-        "format-alt": " {:%d/%m/%Y}",
-        "format": " {:%H:%M}",
+
+    "group/system": {
+        "drawer": {
+        "click-to-reveal": true,
+        "transition-duration": 500,
+        "transition-left-to-right": true
+        },
+
+        "modules": [
+            "custom/system",
+            "disk",
+            "cpu",
+            "memory",
+            "backlight",
+            "battery"
+            ],
+
+        "orientation": "horizontal"
+    },
+
+    "custom/system": {
+        "format": "..",
+        "tooltip": false
+    },
+
+    "disk":
+    {
+        "format": "Disk: {free}",
         "tooltip": false,
-        "on-click-right": "kitty --title 'calcurse' -e calcurse"
+        "unit": "GB"
     },
-    
+
+    "cpu": {
+        "format": "| CPU: {usage} % |",
+
+        "states": {
+            "critical": 95,
+            "warning": 80
+        },
+
+        "on-click-right": "",
+        "tooltip": false
+    },
+
+    "memory": {
+        "format": "RAM: {percentage}%",
+        "on-click-right": "",
+        "tooltip": false
+    },
+
     "backlight": {
         "device": "intel_backlight",
         "format": "{icon} {percent}%",
-        "format-icons": ["", "", "", "", "", "", "", "", ""],
         "format-alt": "{icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
         "tooltip": false
     },
-    
+
     "battery": {
+        "bat": "BAT0",
+
         "states": {
-            "warning": 30,
-            "critical": 15
+            "critical": 15,
+            "warning": 30
         },
-        
+
         "format": "{icon} {capacity}%",
-        "format-charging": "",
-        "format-plugged": "",
         "format-alt": "{icon} {power}W",
-        "format-icons": ["", "",  "", "", "", "", "", "", "", "", "", ""],
+        "format-charging": "󰂄",
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "format-plugged": "󱟦",
         "tooltip": false
     },
-    
+
+    "network":{
+        "format": "󰈀",
+        "format-disconnected": "󰅛",
+        "format-ethernet": "󰈀",
+        "format-wifi": "󰖩",
+        "on-click-right": "~/.config/scripts/launch_networktui.sh",
+        "tooltip": false
+    },
+
     "pulseaudio": {
         "format": "{icon} {volume}%",
-        "format-muted": "",
-        
+
         "format-icons": {
             "default": ["", "", " "]
         },
-        
-        "on-click": "pavucontrol",
+
+        "format-muted": "",
+        "on-click-right": "pavucontrol",
         "tooltip": false
     },
 
-    "custom/power": {
-        "tooltip": false,
-        "on-click": "wlogout --protocol layer-shell -b 5 &",
-        "format": "襤"
+    "bluetooth": {
+        "format-connected": "",
+        "format-off": "",
+        "format-on": "",
+        "on-click-right": "~/.config/scripts/launch_bluetui.sh",
+        "tooltip": false
     },
 
-    "bluetooth": {
-        "format-on": "",
-        "format-off": "",
-        "format-connected": "",
-        "on-click": "blueman-manager &",
+    "clock": {
+        "format": "{:%H:%M}",
+        "format-alt": "{:%d/%m/%Y}",
+        "on-click-right": "~/.config/scripts/launch_calcurse.sh",
+        "tooltip": false
+    },
+
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10,
         "tooltip": false
     }
 }

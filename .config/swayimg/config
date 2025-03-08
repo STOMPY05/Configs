@@ -1,0 +1,211 @@
+################################################################################
+### General Configuration
+################################################################################
+[general]
+### Mode At Startup (Viewer/Gallery)
+mode = viewer
+### Window Position (Parent Or Absolute Coordinates)
+position = parent
+### Window Size (Fullscreen/Parent/Image, Or Absolute Size)
+size = parent
+### Use Window Decoration (Yes/No)
+decoration = yes
+### Action Performed By SIGUSR1 Signal (Same Format As For Key Bindings)
+sigusr1 = reload
+### Action Performed By SIGUSR2 Signal (Same Format As For Key Bindings)
+sigusr2 = next_file
+### Application ID And Window Class Name
+app_id = swayimg
+
+################################################################################
+### Viewer Mode Configuration
+################################################################################
+[viewer]
+### Window Background Color (RGBA)
+window = #000000ff
+### Background For Transparent Images (Grid/RGBA)
+transparency = RGBA
+### Default Image Scale (Optimal/Fit/Width/Height/Fill/Real)
+scale = optimal
+### Keep Absolute Zoom Across Images (Yes/No)
+keep_zoom = no
+### Initial Image Position
+position = center
+### Fix Position Of The Image On The Window Surface (Yes/No)
+fixed = yes
+### Anti-Aliasing Mode (None/Box/Bilinear/BiCubic/MKS13)
+antialiasing = mks13
+### Run Slideshow At Startup (Yes/No)
+slideshow = no
+### Slideshow Image Display Time (Seconds)
+slideshow_time = 3
+### Number Of Previously Viewed Images To Store In Cache
+history = 1
+### Number Of Preloaded Images (Read Ahead)
+preload = 1
+
+################################################################################
+### Gallery Mode Configuration
+################################################################################
+[gallery]
+### Size Of The Thumbnail (Pixels)
+size = 200
+### Max Number Of Thumbnails In Memory Cache, 0 For Unlimited
+cache = 100
+### Enable/Disable Storing Thumbnails In Persistent Storage (Yes/No)
+pstore = no
+### Fill The Entire Tile With Thumbnail (Yes/No)
+fill = yes
+### Anti-Aliasing Mode For Thumbnails (None/Box/Bilinear/BiCubic/MKS13)
+antialiasing = mks13
+### Background Color Of The Window (RGBA)
+window = #000000ff
+### Background Color Of The Tile (RGBA)
+background =rgb(32, 32, 32)
+### Background Color Of The Selected Tile (RGBA)
+select = #404040ff
+### Border Color Of The Selected Tile (RGBA)
+border = #000000ff
+### Shadow Color Of The Selected Tile (RGBA)
+shadow = #000000ff
+
+################################################################################
+### Image List Configuration
+################################################################################
+[list]
+### Default Order (None/Alpha/Reverse/Random)
+order = alpha
+### Looping List Of Images (Yes/No)
+loop = yes
+### Read Directories Recursively (Yes/No)
+recursive = yes
+### Open All Files In The Directory Of The Specified File (Yes/No)
+all = yes
+
+################################################################################
+### Font Configuration
+################################################################################
+[font]
+### Font Name
+name = monospace
+### Font Size
+size = 14
+### Font Color (RGBA)
+color = #ccccccff
+### Shadow Color (RGBA)
+shadow = #000000d0
+### Background Color (RGBA)
+background = #00000000
+
+################################################################################
+# Image Meta Info Scheme (Format, Size, EXIF, Etc)
+################################################################################
+[info]
+# Show On Startup (Yes/No)
+show = yes
+# Timeout To Hide Info (Seconds, 0 To Always Show)
+info_timeout = 5
+# Timeout To Hide Status Message (Seconds)
+status_timeout = 3
+
+# Display Scheme For Viewer Mode (Position = Content)
+[info.viewer]
+top_left = +name,+format,+filesize,+imagesize,+exif
+top_right = index
+bottom_left = scale,frame
+bottom_right = status
+
+# Display Scheme For Gallery Mode (Position = Content)
+[info.gallery]
+top_left = none
+top_right = none
+bottom_left = none
+bottom_right = name,status
+
+################################################################################
+# Viewer Mode Key Binding Configuration: Key = Action [Parameters]
+################################################################################
+[keys.viewer]
+F1 = help
+Home = first_file
+End = last_file
+Prior = prev_file
+Next = next_file
+Space = next_file
+Shift+r = rand_file
+Shift+d = prev_dir
+d = next_dir
+Shift+o = prev_frame
+o = next_frame
+c = skip_file
+Shift+s = slideshow
+s = animation
+f = fullscreen
+Return = mode
+Left = step_left 10
+Right = step_right 10
+Up = step_up 10
+Down = step_down 10
+Equal = zoom +10
+Plus = zoom +10
+Minus = zoom -10
+w = zoom width
+Shift+w = zoom height
+z = zoom fit
+Shift+z = zoom fill
+0 = zoom real
+BackSpace = zoom optimal
+Alt+s = scale
+Alt+z = keep_zoom
+bracketleft = rotate_left
+bracketright = rotate_right
+m = flip_vertical
+Shift+m = flip_horizontal
+a = antialiasing
+r = reload
+i = info
+Shift+Delete = exec rm -f "%"; skip_file
+Escape = exit
+q = exit
+
+# Mouse Related
+ScrollLeft = step_right 5
+ScrollRight = step_left 5
+ScrollUp = step_up 5
+ScrollDown = step_down 5
+Ctrl+ScrollUp = zoom +10
+Ctrl+ScrollDown = zoom -10
+Shift+ScrollUp = prev_file
+Shift+ScrollDown = next_file
+Alt+ScrollUp = prev_frame
+Alt+ScrollDown = next_frame
+
+################################################################################
+# Gallery Mode Key Binding Configuration: Key = Action [Parameters]
+################################################################################
+[keys.gallery]
+F1 = help
+Home = first_file
+End = last_file
+Left = step_left
+Right = step_right
+Up = step_up
+Down = step_down
+Prior = page_up
+Next = page_down
+c = skip_file
+f = fullscreen
+Return = mode
+a = antialiasing
+r = reload
+i = info
+Shift+Delete = exec rm -f "%"; skip_file
+Escape = exit
+q = exit
+
+### Mouse Related
+ScrollLeft = step_right
+ScrollRight = step_left
+ScrollUp = step_up
+ScrollDown = step_down
+

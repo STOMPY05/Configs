@@ -14,4 +14,4 @@ magick $HOME/Pictures/Hyprlock/Hyprlock.png -blur 0x5 $HOME/Pictures/Hyprlock/Hy
 playerctl pause
 
 ### Lock Screen
-pidof hyrlock || hyprlock
+pidof hyprlock || hyprlock

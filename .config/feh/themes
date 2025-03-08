@@ -1,0 +1,7 @@
+-B black \
+-d \
+-N \
+--geometry 1440x900 \
+--foce-aliasing
+--auto-zoom \
+--scale-down
