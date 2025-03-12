@@ -9,4 +9,9 @@ if ! pgrep -f "kitty --title kittyquake"; then
   hyprctl dispatch exec "[workspace special:kittyquake silent] kitty --title "kittyquake""
 fi
 
+hyprctl dispatch resizewindowpixel exact 70% 40%, title:kittyquake
+
+### $STARTPOSY Is Set In Hyprland Variables (It's The Start Y Position On Screen Below The Top Bar)
+hyprctl dispatch movewindowpixel exact 15% $STARTPOSY, title:kittyquake
+
 hyprctl dispatch togglespecialworkspace kittyquake

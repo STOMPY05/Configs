@@ -3,3 +3,4 @@
 ### Variables Used In Other Scripts
 
 MY_TERMINAL=kitty
+STARTPOSY=57
